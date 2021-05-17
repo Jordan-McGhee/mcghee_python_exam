@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div id="create_nav">
+    <h1>Hello, {{user.first_name}}. Create a trip!</h1>
+
+    <form action="logout" method="POST">
+        {% csrf_token %}
+        <input type="submit" value="LOGOUT" class="button" id="logout">
+    </form>
+</div>
+
+<div id="create_main">
+
+    {% if messages %}
+        <ul class="messages">    
+            {% for message in messages %}    
+            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <form action="create" method="POST">
+        {% csrf_token %}
+        <h2>NEW TRIP</h2>
+
+        <div class="form_field">
+            <label for="destination">Destination</label>
+            <input type="text" name="destination" id="destination">
+        </div>
+
+        <div class="form_field">
+            <label for="start_date">Start Date</label>
+            <input type="date" name="start_date">
+        </div>
+
+        <div class="form_field">
+            <label for="end_date">End Date</label>
+            <input type="date" name="end_date">
+        </div>
+
+        <div class="form_field">
+            <label for="plan">Plan</label>
+            <textarea name="plan" id="plan" cols="15" rows="5"></textarea>
+        </div>
+
+        <div id="buttons">
+            <a href="/dashboard" id="cancel">Cancel</a>
+            <input type="submit" value="Create" id="create_update">
+        </div>
+
+
+    </form>
+</div>
+
+{% endblock %}

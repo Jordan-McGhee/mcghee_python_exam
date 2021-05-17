@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div id="index_nav">
+    <h1>Hello, {{user.first_name}}!</h1>
+
+    <div id="index_nav_right">
+        <a href="newtrip" id="new_trip">CREATE NEW TRIP</a>
+        <form action="logout" method="POST">
+            {% csrf_token %}
+            <input type="submit" value="LOGOUT" class="button" id="logout">
+        </form>
+    </div>
+</div>
+
+<div id="index_main">
+<!-- USER TRIPS -->
+    <h2>Your Trips:</h2>
+    <table>
+        <thead>
+            <th class="destination">Destination</th>
+            <th class="date">Start Date</th>
+            <th class="date">End Date</th>
+            <th class="plan">Plan</th>
+            <th class="action">Actions</th>
+        </thead>
+
+        <tbody>
+            {%for trip in user_trips %}
+            <tr>
+                <td class="destination"><a href="{{trip.id}}">{{trip.destination}}</a></td>
+                <td class="date">{{trip.start_date}}</td>
+                <td class="date">{{trip.end_date}}</td>
+                <td class="plan">{{trip.plan}}</td>
+                <td class="action"><a href="{{trip.id}}/remove">Remove</a> | <a href="{{trip.id}}/edit">Edit</a></td>
+            </tr>
+            {% endfor %}
+
+            <!-- ADD ROWS FOR JOINED TRIPS -->
+            {% for trip in joined_trips %}
+            <tr>
+                <td class="destination"><a href="{{trip.id}}">{{trip.destination}}</a></td>
+                <td class="date">{{trip.start_date}}</td>
+                <td class="date">{{trip.end_date}}</td>
+                <td class="plan">{{trip.plan}}</td>
+                <td class="action">
+                    <form action="{{trip.id}}/cancel" method="POST">
+                        {% csrf_token %}
+                        <input type="submit" value="Cancel" class="cancel">
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- ALL OTHER TRIPS -->
+    <h2>Other People's Trips:</h2>
+
+    <table>
+        <thead>
+            <th class="destination">Destination</th>
+            <th>Created By</th>
+            <th class="date">Start Date</th>
+            <th class="date">End Date</th>
+            <th class="plan">Plan</th>
+            <th class="join">Want to Join?</th>
+        </thead>
+
+        <tbody>
+            {%for trip in other_trips %}
+                {% if trip not in joined_trips %}
+                <tr>
+                    <td class="destination"><a href="{{trip.id}}">{{trip.destination}}</a></td>
+                    <td>{{trip.created_by.first_name}} {{trip.created_by.last_name}}</td>
+                    <td class="date">{{trip.start_date}}</td>
+                    <td class="date">{{trip.end_date}}</td>
+                    <td class="plan">{{trip.plan}}</td>
+                    <td class="join"><form action="{{trip.id}}/join" method="POST">
+                        {% csrf_token %}
+                        <input type="submit" value="Join" class="cancel">
+                    </form></td>
+                </tr>
+                {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

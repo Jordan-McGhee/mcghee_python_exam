@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div id="create_nav">
+    <h1>Hello, {{user.first_name}}. Let's edit your trip!</h1>
+
+    <form action="logout" method="POST">
+        {% csrf_token %}
+        <input type="submit" value="LOGOUT" class="button" id="logout">
+    </form>
+</div>
+
+<div id="create_main">
+    {% if messages %}
+        <ul class="messages">    
+            {% for message in messages %}    
+            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <form action="/dashboard/{{this_trip.id}}/update" method="POST">
+        {% csrf_token %}
+        <div class="form_field">
+            <label for="destination">Destination</label>
+            <input type="text" name="destination" value="{{this_trip.destination}}" id="destination">
+        </div>
+
+        <div class="form_field">
+            <label for="start_date">Start Date</label>
+            <input type="date" name="start_date" value="{{this_trip.start_date|date:'Y-m-d'}}">
+        </div>
+
+        <div class="form_field">
+            <label for="end_date">End Date</label>
+            <input type="date" name="end_date" value="{{this_trip.end_date|date:'Y-m-d'}}">
+        </div>
+
+        <div class="form_field">
+            <label for="plan">Plan</label>
+            <textarea name="plan" cols="15" rows="5" id="plan">{{this_trip.plan}}</textarea>
+        </div>
+
+        <div id="buttons">
+            <a href="/dashboard" id="cancel">Cancel</a>
+            <input type="submit" value="Update" id="create_update">
+        </div>
+
+
+    </form>
+</div>
+
+{% endblock %}

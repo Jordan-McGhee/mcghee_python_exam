@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<div id="remove_main">
+    <h1>Are you sure you want to delete your trip to {{this_trip.destination}}?</h1>
+
+    <div id="remove_buttons">
+        <a href="/dashboard" id="no_delete">No</a>
+        <form action="destroy" method="POST">
+            {% csrf_token %}
+            <input type="submit" value="Yes, Delete Trip" class="button" id="delete">
+        </form>
+    </div>
+</div>
+
+
+
+{% endblock %}

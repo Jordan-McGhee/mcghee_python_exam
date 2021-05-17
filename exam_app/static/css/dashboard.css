@@ -1,0 +1,249 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+#wrapper {
+    margin: 0px auto 40px;
+    width: 1000px;
+    background-color: #fff;
+    border: 1px solid black;
+}
+
+a:visited {
+    color: blue;
+}
+
+#logout {
+    padding: 6px;
+}
+
+/* INDEX.HTML */
+
+#index_nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #efefef;
+    padding: 20px;
+    margin-bottom: 15px;
+}
+
+#index_nav_right {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 250px;
+}
+
+#new_trip, #dashboard, #no_delete {
+    text-decoration: none;
+    background-color: blue;
+    color: whitesmoke;
+    border: 1px solid white;
+    border-radius: 4px;
+    padding: 8px;
+}
+
+#new_trip:hover, #dashboard:hover, #no_delete:hover {
+    background-color: lightblue;
+    color: black;
+}
+
+#index_main {
+    padding: 20px;
+}
+
+.destination, .plan {
+    text-align: left;
+    min-width: 50px;
+    max-width: 100px;
+}
+
+.date {
+    text-align: center;
+    max-width: 50px;
+}
+
+.action {
+    text-align: center;
+    max-width: 50px;
+}
+
+.join {
+    text-align: center;
+    max-width: 50px;
+}
+
+.cancel {
+    border: none;
+    color: blue;
+    background-color: #fff;
+    text-decoration: underline;
+}
+
+thead {
+    background-color: #efefef;
+}
+
+table {
+    margin: 15px auto;
+    width: 95%;
+}
+
+td, th {
+overflow: hidden;
+white-space: nowrap;
+border-bottom: 1px solid black;
+padding: 4px;
+}
+
+/* CREATE.HTML/EDIT.HTML */
+
+#create_nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #efefef;
+    padding: 20px;
+    margin-bottom: 15px;
+}
+
+.messages {
+    margin: 15px auto;
+    color: red;
+    outline: 1px solid red;
+    width: 34%;
+}
+
+.messages li {
+    margin: auto;
+    list-style-type: none;
+    margin: auto;
+    text-align: center;
+    padding: 5px;
+    font-weight: bolder;
+}
+
+#create_main {
+    margin: 10px auto;
+}
+
+#create_main form {
+    margin: auto;
+    outline: 1px solid black;
+    width: 30%;
+    padding: 20px;
+    text-align: center;
+}
+
+.form_field {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 15px;
+}
+
+#destination, #plan {
+    width: 149px;
+}
+
+#buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-left: 167px;
+    width: 40%;
+}
+
+#cancel {
+    padding: 6px;
+    text-decoration: none;
+    color: white;
+    background-color: red;
+    border: 1px solid white;
+}
+
+#create_update {
+    padding: 6px;
+    margin-left: 5px;
+}
+
+/* VIEW.HTML */
+
+#view_nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #efefef;
+    padding: 20px;
+    margin-bottom: 15px;
+}
+
+#view_nav_right {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 250px;
+}
+
+#view_main {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+#trip_details {
+    width: 30%;
+    margin: 15px;
+    text-align: left;
+    border: 1px solid black;
+    padding: 20px 12px;
+}
+
+#trip_details h2, #trip_details p {
+    margin: 8px 0px;
+}
+
+#joined_by {
+    width: 30%;
+    margin: 15px;
+    text-align: left;
+    border: 1px solid black;
+    padding: 20px 12px;
+}
+
+#joined_by li {
+    margin: 10px 0px 10px 40px;
+}
+
+/* REMOVE.HTML */
+
+#remove_main {
+    margin: 10px auto;
+    text-align: center;
+    width: 40%;
+}
+
+#remove_main h1 {
+    margin: 20px 0px;
+}
+
+#remove_buttons {
+    width: 50%;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#delete {
+    padding: 10px 15px;
+    text-decoration: none;
+    color: white;
+    background-color: red;
+    border: 1px solid white;
+}
+
+#delete:hover {
+    background-color: lightcoral;
+}
